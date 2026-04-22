@@ -11,8 +11,13 @@
 <meta name="description" content="定期巡回・随時対応型訪問介護看護 利用料 簡易計算ツール PRO版（令和6年度介護報酬改定対応）">
 <!-- PWA manifest -->
 <link rel="manifest" href="manifest_pro.json">
-<!-- iOS ホーム画面アイコン -->
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<!-- iOS ホーム画面アイコン
+     iOSはmanifestのiconsを無視 → apple-touch-iconが必須
+     180x180がiPhone最新機種の標準サイズ・RGB（透明なし）が必須 -->
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+<link rel="apple-touch-icon-precomposed" href="icons/icon-180.png">
 <!-- iOS スプラッシュ画面 -->
 <link rel="apple-touch-startup-image" href="icons/splash/splash-iphone14pro.png"  media="screen and (device-width:393px) and (device-height:852px) and (-webkit-device-pixel-ratio:3)">
 <link rel="apple-touch-startup-image" href="icons/splash/splash-iphone14pm.png"   media="screen and (device-width:430px) and (device-height:932px) and (-webkit-device-pixel-ratio:3)">
@@ -528,6 +533,9 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
   -webkit-tap-highlight-color:transparent;touch-action:manipulation;
 }
 </style>
+
+<body>
+
 <!-- 全リセット確認ダイアログ -->
 <div id="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="rdlg-title-text">
   <div class="rdlg-box">
@@ -540,10 +548,6 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
     </div>
   </div>
 </div>
-
-
-
-<body>
 
 <!-- PWAインストールバナー -->
 <div id="pwa-banner">
@@ -657,8 +661,8 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
     <div class="hint-box">※（Ⅰ）〜（Ⅲ）いずれか1つ・区分支給限度基準額対象外</div>
     <div class="tg">
       <div><input type="checkbox" class="cb-input" id="c8" data-group="taisei" data-value="750" data-label="サービス提供体制強化加算（Ⅰ）" data-exclusive="taisei" data-code="766099"><label class="cb-lbl" for="c8"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">体制強化加算（Ⅰ）介護福祉士60%以上</div><div class="cb-unit">+750単位/月</div></div></label></div>
-      <div><input type="checkbox" class="cb-input" id="c9" data-group="taisei" data-value="640" data-label="サービス提供体制強化加算（Ⅱ）" data-exclusive="taisei" data-code="766098"><label class="cb-lbl" for="c9"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">体制強化加算（Ⅱ）介護福祉士50%以上</div><div class="cb-unit">+640単位/月</div></div></label></div>
-      <div><input type="checkbox" class="cb-input" id="c10" data-group="taisei" data-value="350" data-label="サービス提供体制強化加算（Ⅲ）" data-exclusive="taisei" data-code="766097"><label class="cb-lbl" for="c10"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">体制強化加算（Ⅲ）介護福祉士30%以上等</div><div class="cb-unit">+350単位/月</div></div></label></div>
+      <div><input type="checkbox" class="cb-input" id="c9" data-group="taisei" data-value="640" data-label="サービス提供体制強化加算（Ⅱ）" data-exclusive="taisei" data-code="766111"><label class="cb-lbl" for="c9"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">体制強化加算（Ⅱ）介護福祉士50%以上</div><div class="cb-unit">+640単位/月</div></div></label></div>
+      <div><input type="checkbox" class="cb-input" id="c10" data-group="taisei" data-value="350" data-label="サービス提供体制強化加算（Ⅲ）" data-exclusive="taisei" data-code="766103"><label class="cb-lbl" for="c10"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">体制強化加算（Ⅲ）介護福祉士30%以上等</div><div class="cb-unit">+350単位/月</div></div></label></div>
     </div>
   </div></div>
 
@@ -669,7 +673,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
     <div class="hint-box">※（Ⅰ）（Ⅱ）いずれか1つのみ</div>
     <div class="tg">
       <div><input type="checkbox" class="cb-input" id="c11" data-group="ninchi" data-per-day="3" data-label="認知症専門ケア加算（Ⅰ）" data-exclusive="ninchi" data-needs-days="niDays" data-code="766135"><label class="cb-lbl" for="c11"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">認知症専門ケア加算（Ⅰ）</div><div class="cb-unit">+3単位/日</div></div></label></div>
-      <div><input type="checkbox" class="cb-input" id="c12" data-group="ninchi" data-per-day="4" data-label="認知症専門ケア加算（Ⅱ）" data-exclusive="ninchi" data-needs-days="niDays" data-code="766136"><label class="cb-lbl" for="c12"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">認知症専門ケア加算（Ⅱ）</div><div class="cb-unit">+4単位/日</div></div></label></div>
+      <div><input type="checkbox" class="cb-input" id="c12" data-group="ninchi" data-per-day="4" data-label="認知症専門ケア加算（Ⅱ）" data-exclusive="ninchi" data-needs-days="niDays" data-code="766137"><label class="cb-lbl" for="c12"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">認知症専門ケア加算（Ⅱ）</div><div class="cb-unit">+4単位/日</div></div></label></div>
     </div>
     <div class="inline-box" id="niDays-box"><label class="fl">対象日数</label><input type="number" id="niDays" value="30" min="1" max="30" style="margin-top:5px;max-width:140px"></div>
   </div></div>
@@ -680,7 +684,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
   <div class="acc-body" id="body-reha"><div class="acc-inner"><div class="tg">
     <div><input type="checkbox" class="cb-input" id="c13" data-group="reha" data-value="100" data-label="生活機能向上連携加算（Ⅰ）" data-exclusive="reha-kinou" data-code="764012"><label class="cb-lbl" for="c13"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">生活機能向上連携加算（Ⅰ）</div><div class="cb-unit">+100単位/月</div></div></label></div>
     <div><input type="checkbox" class="cb-input" id="c14" data-group="reha" data-value="200" data-label="生活機能向上連携加算（Ⅱ）" data-exclusive="reha-kinou" data-code="764013"><label class="cb-lbl" for="c14"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">生活機能向上連携加算（Ⅱ）</div><div class="cb-unit">+200単位/月</div></div></label></div>
-    <div><input type="checkbox" class="cb-input" id="c15" data-group="reha" data-value="50" data-label="口腔連携強化加算" data-code="764017"><label class="cb-lbl" for="c15"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">口腔連携強化加算</div><div class="cb-unit">+50単位/回</div></div></label></div>
+    <div><input type="checkbox" class="cb-input" id="c15" data-group="reha" data-value="50" data-label="口腔連携強化加算" data-code="766192"><label class="cb-lbl" for="c15"><div class="cb-box"></div><div class="cb-body"><div class="cb-text">口腔連携強化加算</div><div class="cb-unit">+50単位/回</div></div></label></div>
   </div></div></div>
 
   <button type="button" class="acc-btn" id="abtn-init" data-acc="init">
@@ -868,7 +872,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:13px 0}
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw_pro.js', { scope: './' }).then(function(reg) {
+    navigator.serviceWorker.register('sw_pro.js', { scope: '/' }).then(function(reg) {
       console.log('[PWA] Service Worker 登録完了:', reg.scope);
       reg.onupdatefound = function() {
         var newWorker = reg.installing;
@@ -950,7 +954,7 @@ var BASE_CODE={
   integrated_nursing:   {1:'761211',2:'761221',3:'761231',4:'761241',5:'761251'},
   cooperation:          {1:'762111',2:'762121',3:'762131',4:'762141',5:'762151'}
 };
-var SHOKAI_CODE={'0':'','0.245':'766114','0.224':'766115','0.182':'766116','0.145':'766117'};
+var SHOKAI_CODE={'0':'','0.245':'766114','0.224':'766112','0.182':'766104','0.145':'766380'};
 var SHOKAI_LABEL={'0.245':'処遇改善加算（Ⅰ）','0.224':'処遇改善加算（Ⅱ）','0.182':'処遇改善加算（Ⅲ）','0.145':'処遇改善加算（Ⅳ）'};
 var _lastSteps=[];
 var _pvMode='simple';
@@ -1224,12 +1228,17 @@ function calculate(){
   /* 日割り時はラベルと値を変更 */
   var bkBaseItem=document.getElementById('bk-base');
   var bkBaseLabel=bkBaseItem?bkBaseItem.previousElementSibling:null;
+  /* 初期加算を基本単位数に合算して表示（計算値は変えない） */
+  var initCbDisp=document.getElementById('c16');
+  var initKa=(initCbDisp&&initCbDisp.checked&&!initCbDisp.disabled)?(inD*30):0;
+  var baseDisp=base+initKa;
+  var baseLblSuffix=initKa>0?'（初期加算含む）':'';
   if(isPro){
-    if(bkBaseLabel) bkBaseLabel.textContent='基本単位数（日割）';
-    if(bkBaseItem) bkBaseItem.innerHTML=fmt(base)+' <span class="bu">単位</span>';
+    if(bkBaseLabel) bkBaseLabel.textContent='基本単位数（日割）'+baseLblSuffix;
+    if(bkBaseItem) bkBaseItem.innerHTML=fmt(baseDisp)+' <span class="bu">単位</span>';
   } else {
-    if(bkBaseLabel) bkBaseLabel.textContent='基本単位数';
-    if(bkBaseItem) bkBaseItem.innerHTML=fmt(base)+' <span class="bu">単位</span>';
+    if(bkBaseLabel) bkBaseLabel.textContent='基本単位数'+baseLblSuffix;
+    if(bkBaseItem) bkBaseItem.innerHTML=fmt(baseDisp)+' <span class="bu">単位</span>';
   }
   document.getElementById('bk-sub').innerHTML=fmt(subT)+' <span class="bu">単位</span>';
   document.getElementById('bk-shogai').innerHTML=fmt(shU)+' <span class="bu">単位</span>';
@@ -1300,12 +1309,16 @@ function fullReset(){
     staffName:'',
     targetMonth:'',
     certDate:'',
-    remarks:''
+    remarks:'',
+    proRateMode:'full'
   };
   for(var fid in defaults){
     var el=document.getElementById(fid);
     if(el) el.value=defaults[fid];
   }
+  /* proRateMode リセット後：利用日数ボックスを非表示に */
+  var usedDaysBox=document.getElementById('usedDays-box');
+  if(usedDaysBox) usedDaysBox.style.display='none';
   /* daycareAutoSync もリセット */
   var dcAuto=document.getElementById('daycareAutoSync');
   if(dcAuto) dcAuto.checked=false;
@@ -1408,8 +1421,10 @@ function buildSheetHTML(mode){
   if(tMonth) subtitle+='　対象月：'+tMonth;
   subtitle+='　算出日：'+dateStr;
 
+  var initCbPv=document.getElementById('c16');
+  var hasInitKa=(initCbPv&&initCbPv.checked&&!initCbPv.disabled);
   var bkData=[
-    {l:'基本単位数',v:document.getElementById('bk-base').textContent},
+    {l:'基本単位数'+(hasInitKa?'（初期加算含む）':''), v:document.getElementById('bk-base').textContent},
     {l:'加減算後単位数',v:document.getElementById('bk-sub').textContent},
     {l:'処遇改善加算単位数',v:document.getElementById('bk-shogai').textContent},
     {l:'総単位数',v:document.getElementById('bk-total').textContent},
@@ -1466,11 +1481,22 @@ function buildSheetHTML(mode){
       +'<td style="'+tdC+'">'+baseCode+'</td>'
       +'<td style="'+tdL+'">定期巡回・随時対応型訪問介護看護費<br><span style="color:#666">'+svcLbl+'　要介護'+lv2+'</span></td>'
       +'<td style="'+tdR+'">'+baseUnit+' 単位/月</td></tr>';
-    /* 加算（data-code 属性があるもの） */
+    /* 初期加算（基本単位に含まれるためここに表示） */
+    var initCb=document.getElementById('c16');
+    if(initCb&&initCb.checked&&!initCb.disabled){
+      var initDaysVal=parseInt(document.getElementById('initDays').value)||30;
+      var initTotal=30*initDaysVal;
+      codeRows+='<tr style="'+trStyle+'background:#e8f0ff">'
+        +'<td style="'+tdC+'color:#1a5fa8;">764002</td>'
+        +'<td style="'+tdL+'">初期加算<br><span style="color:#666">利用開始後30日以内　'+initDaysVal+'日 × 30単位/日</span></td>'
+        +'<td style="'+tdR+'">＋'+initTotal.toLocaleString('ja-JP')+' 単位</td></tr>';
+    }
+    /* 加算（data-code 属性があるもの・初期加算c16は上で処理済みのため除外） */
     var allCbsCode=document.querySelectorAll('.cb-input[data-code]:checked');
     for(var ci=0;ci<allCbsCode.length;ci++){
       var cbEl=allCbsCode[ci];
       if(cbEl.disabled) continue;
+      if(cbEl.id==='c16') continue; /* 初期加算は基本単位セクションで表示済み */
       var cbCode=cbEl.getAttribute('data-code');
       var cbLbl=cbEl.getAttribute('data-label')||'';
       var cbVal=cbEl.getAttribute('data-value')||cbEl.getAttribute('data-per-day')||'—';
@@ -1881,7 +1907,8 @@ function captureFullState(){
     cDate:   document.getElementById('certDate').value,
     remarks: document.getElementById('remarks').value,
     checkedIds: checkedIds,
-    dcAutoSync: (function(){ var el=document.getElementById('daycareAutoSync'); return el?el.checked:false; })()
+    dcAutoSync: (function(){ var el=document.getElementById('daycareAutoSync'); return el?el.checked:false; })(),
+    proRate: (function(){ var el=document.getElementById('proRateMode'); return el?el.value:'full'; })()
   };
 }
 
@@ -1903,6 +1930,13 @@ function restoreFullState(h){
   /* daycareAutoSync チェックボックスを復元 */
   var dcAuto=document.getElementById('daycareAutoSync');
   if(dcAuto && h.dcAutoSync!=null) dcAuto.checked=!!h.dcAutoSync;
+  /* proRateMode を復元し、利用日数ボックスの表示を同期 */
+  var proRateEl=document.getElementById('proRateMode');
+  if(proRateEl && h.proRate!=null){
+    proRateEl.value=h.proRate;
+    var usedDaysBox=document.getElementById('usedDays-box');
+    if(usedDaysBox) usedDaysBox.style.display=(h.proRate==='daily')?'block':'none';
+  }
   /* monthDays 連動：usedDays・niDays の上限を合わせる */
   if(h.md) syncMonthDays(h.md);
   /* ① チェックボックスを復元する前に、すべてのdisabled・バッジを一旦クリア */
